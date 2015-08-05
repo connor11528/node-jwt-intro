@@ -4,7 +4,9 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	cookieParser = require('cookie-parser'),
     methodOverride = require('method-override'),
+    morgan = require('morgan'),
 	cors = require('cors'),
+	jwt = require('jsonwebtoken'),
 	app = express();
 
 // ENVIRONMENT CONFIG
@@ -15,11 +17,14 @@ mongoose.connect(envConfig.db);
 
 // EXPRESS CONFIG
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(methodOverride());
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
+app.use(morgan('dev'));
+
+app.set('superSecret', 'thupers3crT$12');
 
 // ROUTES
 require('./server/routes')(app);
