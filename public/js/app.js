@@ -1,7 +1,11 @@
 
-var app = angular.module('mean-boilerplate', [
-	'ui.router'
+var app = angular.module('jwtintro', [
+	'ui.router',
+	'formly',
+	'formlyBootstrap'
 ]);
+
+app.constant('API_URL', 'api/');
 
 app.config(function($stateProvider, $urlRouterProvider){
 	$stateProvider
@@ -9,6 +13,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 			url: "/",
 			templateUrl: "templates/main.html",
 			controller: 'MainCtrl'
+		})
+		.state('login', {
+			url: "/login",
+			templateUrl: "templates/login.html",
+			controller: 'LoginCtrl'
 		});
 
 	$urlRouterProvider.otherwise("/");

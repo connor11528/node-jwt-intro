@@ -1,4 +1,11 @@
 
 <h1>Login</h1>
 
-<a class='btn btn-success' href='/api/login'>Login with Spotify</a>
+<form name='loginForm' ng-submit='login(newUser)' novalidate>
+	<formly-form model='newUser' fields='loginFields' form='loginForm'>
+		<button type='submit' class='btn btn-primary' ng-disabled="loginForm.$invalid">Login</button>
+	</formly-form>
+	
+</form>
+
+<pre ng-bind='newUser | json'></pre>
