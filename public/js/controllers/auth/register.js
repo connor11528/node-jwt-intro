@@ -21,14 +21,36 @@ app.controller('RegisterCtrl', function($scope, user){
 				type: 'password',
 				placeholder: '8 characters, number and special symbol',
 				required: true
-			}
+			},
+			validators: {
+				checker: function($viewValue, $modelValue, scope){
+					var attemptedPwd = $viewValue || $modelValue;
 
+					var REQUIRED_PATTERNS = [
+					    /\d+/,    //numeric values
+					    /[a-z]+/, //lowercase values
+					    /[A-Z]+/, //uppercase values
+					    /\W+/,    //special characters
+					    /^\S+$/   //no whitespace allowed
+					];
+					var status = true;
+					angular.forEach(REQUIRED_PATTERNS, function(pattern) {
+						// check that the attempted password passes all tests
+						status = status && pattern.test(attemptedPwd);
+					});
+
+					// must be at least eight characters
+					return (status && attemptedPwd.length >= 8)? true : false;
+				}
+
+			}
 		}
 	];
 
-	$scope.login = function(newUser){
-		user.login(newUser).then(function success(res){
+	$scope.register = function(newUser){
+		user.register(newUser).then(function success(res){
 			// user has logged in, haz their data
+			console.log(res);
 		}, handleError);
 	};
 

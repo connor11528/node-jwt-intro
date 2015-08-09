@@ -1,6 +1,7 @@
 var express = require('express'),
 	path = require('path'),
 	jwt = require('jsonwebtoken'),
+	utils = require('./utils'),
 	rootPath = path.normalize(__dirname + '/../'),
 	apiRouter = express.Router(),
 	User = require('./models/user'),
@@ -15,20 +16,33 @@ module.exports = function(app){
 		});
 	});
 
-	// add users
+	// add user
 	apiRouter.post('/users', function(req, res){
-		// need to hash password etc
-		var newUser = new User({
-			email: req.body.email,
-			password: req.body.password,
-			admin: true
-		});
+		console.log('hit add user route');
 
-		newUser.save(function(err){
-			if(err) throw err;
+		utils.hashPwd(req.body.password).then(function(hashedPwd){
+			var newUser = new User({
+				email: req.body.email,
+				password: hashedPwd,
+				admin: false
+			});
 
-			res.json({ success: true });
+			newUser.save(function(err){
+				if(err) throw err;
+
+				// create token
+				var token = jwt.sign({ email: newUser.email }, app.get('superSecret'), { expiresInminutes: 1440 });
+
+				// send token
+				res.json({
+					success: true,
+					message: 'Successfully authenticated!',
+					token: token,
+					user: newUser
+				});
+			});
 		});
+		
 	});
 
 	// authenticate user
