@@ -1,10 +1,7 @@
 
 <h3>Sign in</h3>
 <form name='loginForm' ng-submit='login(userCreds)' novalidate>
-	<formly-form model='newUser' fields='loginFields' form='loginForm'>
+	<formly-form model='userCreds' fields='loginFields' form='loginForm'>
 		<button type='submit' class='btn btn-primary' ng-disabled="loginForm.$invalid">Login</button>
 	</formly-form>
-	
 </form>
-
-<pre ng-bind='userCreds | json'></pre>

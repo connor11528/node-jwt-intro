@@ -19,7 +19,7 @@ app.controller('LoginCtrl', function($scope, user){
 			templateOptions: {
 				label: 'Password',
 				type: 'password',
-				placeholder: '8 characters, number and special symbol',
+				placeholder: 'Don\'t tell nobody',
 				required: true
 			}
 
@@ -29,12 +29,12 @@ app.controller('LoginCtrl', function($scope, user){
 	$scope.login = function(userCreds){
 		user.login(userCreds).then(function success(res){
 			console.log('Success!');
-			console.log(res);
+			console.log(res.data);
 		}, handleError);
 	};
 
 	function handleError(res){
 		console.error('Error!');
-		console.error(res);
+		console.error(res.data);
 	}
 });

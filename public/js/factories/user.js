@@ -6,7 +6,7 @@ app.factory('user', function($http, auth, API_URL){
 				email: userCreds.email,
 				password: userCreds.password
 			}).then(function(res){
-				console.log(res)
+				console.log(res.data);
 				console.log('Token set: ' + res.data.token);
 				auth.setToken(res.data.token);
 				return res;
