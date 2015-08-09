@@ -2,11 +2,12 @@ node-jwt-intro
 =====
 
 
-Using angular-formly.
+Using
+	-angular-formly
+	-ui router abstract states
 
-scotch tutorial: https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens
-
-
+	-password hashing with [node.bcrypt](https://github.com/ncb000gt/node.bcrypt.js)
+	-jwt storage
 
 
 #### Getting started

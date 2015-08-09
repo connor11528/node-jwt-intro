@@ -1,8 +1,8 @@
 
-app.controller('LoginCtrl', function($scope, user){
+app.controller('RegisterCtrl', function($scope, user){
 	$scope.newUser = {};
 
-	$scope.loginFields = [
+	$scope.registerFields = [
 		{ 
 			type: 'input',
 			key: 'email',

@@ -1,0 +1,10 @@
+
+<h3>Create a new account</h3>
+<form name='registerForm' ng-submit='register(newUser)' novalidate>
+	<formly-form model='newUser' fields='registerFields' form='registerForm'>
+		<button type='submit' class='btn btn-success' ng-disabled="registerForm.$invalid">Register</button>
+	</formly-form>
+	
+</form>
+
+<pre ng-bind='newUser | json'></pre>
