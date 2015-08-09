@@ -1,11 +1,18 @@
-
+<nav>
+<div ng-if='!user' class='pull-right'>
+  <div class='btn btn-primary' ui-sref='auth.login'>Login</div>
+  <div class='btn btn-success' ui-sref='auth.register'>Register</div>
+</div>
+<div ng-if='user'>
+  <p>Hello <span ng-bind='user.email || user.email'></span></p>
+  <div logout></div>
+</div>
+</nav>
 
 <div class='jumbotron text-center'>
-	<h1>Node JWT Intro</h1>
+	<h1>Welcome to the site</h1>
 
-
-	<div class='btn btn-primary' ui-sref='auth.login'>Login</div>
-
-	<div class='btn btn-success' ui-sref='auth.register'>Register</div>
-
+	<ol>
+		<li ng-repeat='user in users'>{{user.email}}</li>
+	</ol>
 </div>

@@ -2,11 +2,12 @@
 <html lang="en" ng-app='jwtintro'>
 <head>
   <meta charset="utf-8">
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 
   <title>Node JWT Intro</title>
   <meta name="description" content="Node JWT Intro">
   <meta name="author" content="Connor Leech">
-
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/main.css">
 
@@ -16,7 +17,6 @@
 </head>
 <body>
 <div class='container'>
-  <pre ng-bind='user | json'></pre>
   <div ui-view></div>
 </div>
   <!-- angular + router + bootstrap -->
@@ -35,5 +35,6 @@
   <script src='js/controllers/main.js'></script>
   <script src='js/controllers/auth/login.js'></script>
   <script src='js/controllers/auth/register.js'></script>
+  <script src='js/directives/logout.js'></script>
 </body>
 </html>

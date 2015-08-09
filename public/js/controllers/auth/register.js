@@ -1,5 +1,5 @@
 
-app.controller('RegisterCtrl', function($rootScope, $scope, user){
+app.controller('RegisterCtrl', function($rootScope, $scope, user, $state){
 	$scope.newUser = {};
 
 	$scope.registerFields = [
@@ -50,7 +50,8 @@ app.controller('RegisterCtrl', function($rootScope, $scope, user){
 	$scope.register = function(newUser){
 		user.register(newUser).then(function success(res){
 			if(res.data.success){
-				$rootScope.user = res.data;
+				$rootScope.user = res.data.user;
+				$state.go('home');
 			}
 		}, handleError);
 	};

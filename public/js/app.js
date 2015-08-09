@@ -4,7 +4,18 @@ var app = angular.module('jwtintro', [
 	'formly',
 	'formlyBootstrap'
 ], function($httpProvider){
-	
+	// will add token to header of requests if token is present
+	$httpProvider.interceptors.push('authInterceptor');
+});
+
+app.run(function($rootScope, auth){
+	// if the user's data is in local storage
+	// show them as signed in
+	var user = auth.getUser();
+
+	if(user){
+		$rootScope.user = JSON.parse(user);
+	}
 });
 
 app.constant('API_URL', 'api/');

@@ -4,6 +4,7 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	cookieParser = require('cookie-parser'),
     methodOverride = require('method-override'),
+    expressJwt = require('express-jwt'),
     morgan = require('morgan'),
 	cors = require('cors'),
 	app = express();
@@ -23,7 +24,9 @@ app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 
-app.set('superSecret', 'thupers3crT$12');
+// JWT config
+var jwtSecret = 'thupers3crT$12';
+app.set('superSecret', jwtSecret);
 
 // ROUTES
 require('./server/routes')(app);

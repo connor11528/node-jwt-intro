@@ -6,9 +6,8 @@ app.factory('user', function($http, auth, API_URL){
 				email: userCreds.email,
 				password: userCreds.password
 			}).then(function(res){
-				console.log(res.data);
-				console.log('Token set: ' + res.data.token);
 				auth.setToken(res.data.token);
+				auth.setUser(res.data.user);
 				return res;
 			});
 		},
@@ -19,14 +18,14 @@ app.factory('user', function($http, auth, API_URL){
 				password: newUser.password
 			}).then(function(res){
 				// log user in
-				console.log(res)
-				console.log('Token set: ' + res.data.token);
 				auth.setToken(res.data.token);
+				auth.setUser(res.data.user);
 				return res;
 			});
 		},
 		logout: function(){
 			auth.setToken();
+			auth.setUser();
 		}
 	};
 });

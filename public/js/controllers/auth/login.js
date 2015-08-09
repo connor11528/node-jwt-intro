@@ -1,5 +1,5 @@
 
-app.controller('LoginCtrl', function($rootScope, $scope, user){
+app.controller('LoginCtrl', function($rootScope, $scope, user, $state){
 	$scope.userCreds = {};
 
 	$scope.loginFields = [
@@ -30,11 +30,20 @@ app.controller('LoginCtrl', function($rootScope, $scope, user){
 		user.login(userCreds).then(function success(res){
 			// if successful, log user in
 			if(res.data.success){
-				$rootScope.user = res.data;
+				$rootScope.user = res.data.user;
+				$state.go('home');
 			}	
 		}, function handleError(res){
 			console.error('Error: ' + JSON.stringify(res.data));
 		});
+	};
+
+	$scope.logout = function(){
+		$rootScope.user = null;
+		user.logout();
+
+		// hard page refresh
+		$state.go($state.current.name, $state.params, { reload: true });
 	};
 
 });

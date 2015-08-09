@@ -10,17 +10,11 @@ var express = require('express'),
 module.exports = function(app){	
 	// Users
 	// all users
-	apiRouter.get('/users', authenticated, function(req, res){
+	apiRouter.get('/users', authenticate, function(req, res){
 		User.find({}, function(err, users){
 			res.json(users);
 		});
 	});
-
-	// TODO
-	// middleware to check the user is authenticated
-	function authenticated(req, res, next){
-		next();
-	}
 
 	// add user
 	apiRouter.post('/users', function(req, res){
@@ -99,4 +93,32 @@ module.exports = function(app){
 
 	app.use('/api', apiRouter);
 	app.use('/', router);
+
+	// middleware
+	function authenticate(req, res, next){
+	  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+	  console.log(req.headers);
+	  if (token) {
+
+	  	// verify token validity
+	    jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+	      if (err) {
+	        return res.json({ success: false, message: 'Failed to authenticate token.' });    
+	      } else {
+	        req.decoded = decoded;    
+	        next();
+	      }
+	    });
+
+	  } else {
+
+	    return res.status(403).send({ 
+	        success: false, 
+	        message: 'No token provided.' 
+	    });
+	    
+	  }
+	}
 };
+
