@@ -19,7 +19,7 @@ module.exports = function(app){
 	apiRouter.post('/users', function(req, res){
 		// need to hash password etc
 		var newUser = new User({
-			name: req.body.name,
+			email: req.body.email,
 			password: req.body.password,
 			admin: true
 		});
@@ -34,25 +34,26 @@ module.exports = function(app){
 	// authenticate user
 	apiRouter.post('/users/auth', function(req, res){
 		User.findOne({
-			name: req.body.name
+			email: req.body.email
 		}, function(err, user){
 			if(err) throw err;
 
 			if(!user){
-				res.json({ success: false, message: 'No user with that name' });
+				res.json({ success: false, message: 'No user with that email' });
 			} else if(user){
 				// check password
 				if(user.password !== req.body.password){
 					res.json({ success: false, message: 'Wrong password' });
 				} else {
 					// create token
-					var token = jwt.sign(user, app.get('superSecret'), { expiresInminutes: 1440 });
+					var token = jwt.sign({ email: user.email }, app.get('superSecret'), { expiresInminutes: 1440 });
 
 					// send token
 					res.json({
 						success: true,
 						message: 'Successfully authenticated!',
-						token: token
+						token: token,
+						user: user
 					});
 				}
 			}

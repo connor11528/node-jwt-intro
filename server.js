@@ -6,7 +6,6 @@ var express = require('express'),
     methodOverride = require('method-override'),
     morgan = require('morgan'),
 	cors = require('cors'),
-	jwt = require('jsonwebtoken'),
 	app = express();
 
 // ENVIRONMENT CONFIG

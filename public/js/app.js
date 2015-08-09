@@ -3,7 +3,9 @@ var app = angular.module('jwtintro', [
 	'ui.router',
 	'formly',
 	'formlyBootstrap'
-]);
+], function($httpProvider){
+	
+});
 
 app.constant('API_URL', 'api/');
 

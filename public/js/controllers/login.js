@@ -27,8 +27,8 @@ app.controller('LoginCtrl', function($scope, user){
 	];
 
 	$scope.login = function(newUser){
-		user.login(newUser).then(function success(){
-
+		user.login(newUser).then(function success(res){
+			// user has logged in, haz their data
 		}, handleError);
 	};
 
