@@ -24,6 +24,9 @@ app.factory('user', function($http, auth, API_URL){
 				auth.setToken(res.data.token);
 				return res;
 			});
+		},
+		logout: function(){
+			auth.setToken();
 		}
 	};
 });

@@ -1,5 +1,5 @@
 
-app.controller('RegisterCtrl', function($scope, user){
+app.controller('RegisterCtrl', function($rootScope, $scope, user){
 	$scope.newUser = {};
 
 	$scope.registerFields = [
@@ -49,8 +49,9 @@ app.controller('RegisterCtrl', function($scope, user){
 
 	$scope.register = function(newUser){
 		user.register(newUser).then(function success(res){
-			// user has logged in, haz their data
-			console.log(res);
+			if(res.data.success){
+				$rootScope.user = res.data;
+			}
 		}, handleError);
 	};
 

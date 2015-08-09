@@ -1,5 +1,5 @@
 
-app.controller('LoginCtrl', function($scope, user){
+app.controller('LoginCtrl', function($rootScope, $scope, user){
 	$scope.userCreds = {};
 
 	$scope.loginFields = [
@@ -19,7 +19,7 @@ app.controller('LoginCtrl', function($scope, user){
 			templateOptions: {
 				label: 'Password',
 				type: 'password',
-				placeholder: 'Don\'t tell nobody',
+				placeholder: 'Password',
 				required: true
 			}
 
@@ -28,13 +28,13 @@ app.controller('LoginCtrl', function($scope, user){
 
 	$scope.login = function(userCreds){
 		user.login(userCreds).then(function success(res){
-			console.log('Success!');
-			console.log(res.data);
-		}, handleError);
+			// if successful, log user in
+			if(res.data.success){
+				$rootScope.user = res.data;
+			}	
+		}, function handleError(res){
+			console.error('Error: ' + JSON.stringify(res.data));
+		});
 	};
 
-	function handleError(res){
-		console.error('Error!');
-		console.error(res.data);
-	}
 });

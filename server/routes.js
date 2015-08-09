@@ -37,7 +37,9 @@ module.exports = function(app){
 				if(err) throw err;
 
 				// create token
-				var token = jwt.sign({ email: newUser.email }, app.get('superSecret'), { expiresInminutes: 1440 });
+				var token = jwt.sign(newUser, app.get('superSecret'), { expiresInminutes: 1440 });
+
+				newUser.password = undefined;
 
 				// send token
 				res.json({
@@ -54,23 +56,28 @@ module.exports = function(app){
 	// authenticate user
 	apiRouter.post('/users/auth', function(req, res){
 
-		User.findOne({
+		// add back the password field for this query
+		var query = User.findOne({
 			email: req.body.email
-		}, function(err, user){
-			if(err) throw err;
+		}).select('_id email +password');
 
-			console.log(user);
+		query.exec(function(err, user){
+			if(err) throw err;
 
 			if(!user){
 				res.json({ success: false, message: 'No user with that email' });
 			} else if(user){
+
 				// check password
 				utils.comparePwd(req.body.password, user.password).then(function(isMatch){
 					if(!isMatch){
 						res.json({ success: false, message: 'Wrong password' });
 					} else {
+
 						// create token
-						var token = jwt.sign({ email: user.email }, app.get('superSecret'), { expiresInminutes: 1440 });
+						var token = jwt.sign(user, app.get('superSecret'), { expiresInminutes: 1440 });
+
+						user.password = undefined;
 
 						// send token
 						res.json({
