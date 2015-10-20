@@ -3,7 +3,7 @@ node-jwt-intro
 
 [DEMO](https://node-jwt-intro.herokuapp.com/#/)
 
-[TUTORIAL](http://connorleech.ghost.io/use-express-angular-and-jwt-to-make-a-secure-app/)
+[TUTORIAL](https://github.com/cleechtech/cleechtech.github.io/blob/master/posts/use%20express%2C%20angular%20and%20jwt%20to%20make%20a%20secure%20app.md)
 
 Using
 
