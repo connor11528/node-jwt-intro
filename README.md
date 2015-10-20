@@ -1,6 +1,8 @@
 node-jwt-intro
 =====
 
+> An express.js server with mongodb and mongoose ORM. This repo uses angular.js and the browser's localStorage to create a secure, persistent authentication application
+
 [DEMO](https://node-jwt-intro.herokuapp.com/#/)
 
 [TUTORIAL](https://github.com/cleechtech/cleechtech.github.io/blob/master/posts/use%20express%2C%20angular%20and%20jwt%20to%20make%20a%20secure%20app.md)
