@@ -7,11 +7,11 @@ node-jwt-intro
 
 Using
 
--angular-formly
--angular ui router abstract states
--mongodb with mongoose
--password hashing with [node.bcrypt](https://github.com/ncb000gt/node.bcrypt.js)
--jwt token authentication
+* angular-formly
+* angular ui router abstract states
+* mongodb with mongoose
+* password hashing with [node.bcrypt](https://github.com/ncb000gt/node.bcrypt.js)
+* jwt token authentication
 
 Relied heavily on the [egghead course](https://egghead.io/series/angularjs-authentication-with-jwt) and the [scotch.io tutorial](https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens)
 
