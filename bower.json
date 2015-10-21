@@ -1,0 +1,26 @@
+{
+  "name": "node-jwt-intro",
+  "version": "0.0.0",
+  "homepage": "https://github.com/cleechtech/node-jwt-intro",
+  "authors": [
+    "Connor Leech <cleech@proteus.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "api-check": "~7.5.3",
+    "angular-formly": "~7.2.3",
+    "angular-formly-templates-bootstrap": "~6.1.5"
+  }
+}

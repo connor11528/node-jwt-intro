@@ -98,7 +98,6 @@ module.exports = function(app){
 	function authenticate(req, res, next){
 	  var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
-	  console.log(req.headers);
 	  if (token) {
 
 	  	// verify token validity
@@ -120,5 +119,6 @@ module.exports = function(app){
 	    
 	  }
 	}
+
 };
 
