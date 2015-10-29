@@ -5,9 +5,9 @@ node-jwt-intro
 
 [DEMO](https://node-jwt-intro.herokuapp.com/#/)
 
-[TUTORIAL](https://github.com/cleechtech/cleechtech.github.io/blob/master/posts/use%20express%2C%20angular%20and%20jwt%20to%20make%20a%20secure%20app.md)
+[TUTORIAL](http://cleechtech.github.io/2015/10/23/use-express-angular-and-jwt-to-make-a-secure-app/)
 
-Using
+Usage
 
 * angular-formly
 * angular ui router abstract states
