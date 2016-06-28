@@ -36,8 +36,8 @@ heroku ps:scale web=1
 ```
 
 ### Tutorial
-
-Master authentication with fullstack javascript development
+=======================================================
+> Master authentication with fullstack javascript development
 
 ![](http://media.giphy.com/media/3oEduWAFQjlfP5gMU0/giphy.gif)
 
