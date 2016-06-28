@@ -37,9 +37,13 @@ heroku ps:scale web=1
 
 ### Tutorial
 =======================================================
+# use express, angular and jwt to make a secure app 
+
+![](http://media.giphy.com/media/3oEduWAFQjlfP5gMU0/giphy.gif)
+
 > Master authentication with fullstack javascript development
 
-This tutorial builds this project from scratch.
+This tutorial builds the code in this repo from scratch.
 
 ### Build server
 ```
@@ -81,8 +85,6 @@ module.exports = mongoose.model('User', userSchema);
 ```
 
 Like the comments say, email and passwords are required, emails must be unique and don't send the password with the request. We are going to hash user passwords but it is still good practice to not expose that.
-
-![](http://media.giphy.com/media/3oEduWAFQjlfP5gMU0/giphy.gif)
 
 *Hash password:* we are going to have a util for hashing and decrypting passwords. We will have these methods in **server/utils.js**:
 
