@@ -39,12 +39,13 @@ heroku ps:scale web=1
 =======================================================
 > Master authentication with fullstack javascript development
 
-![](http://media.giphy.com/media/3oEduWAFQjlfP5gMU0/giphy.gif)
+This tutorial builds this project from scratch.
 
 ### Build server
 ```
-$ git clone https://github.com/jasonshark/mean-starter
+$ git clone https://github.com/connor11528/mean-starter
 ```
+mean-starter is the template I use for base MEAN stack apps. When you're done we will have a starter template with authentication that you can use for all projects. I also have [connor11528/mean-auth-starter](https://github.com/connor11528/mean-auth-starter), which is very similar to this repo.
 
 Install some more packages:
 
@@ -81,6 +82,7 @@ module.exports = mongoose.model('User', userSchema);
 
 Like the comments say, email and passwords are required, emails must be unique and don't send the password with the request. We are going to hash user passwords but it is still good practice to not expose that.
 
+![](http://media.giphy.com/media/3oEduWAFQjlfP5gMU0/giphy.gif)
 
 *Hash password:* we are going to have a util for hashing and decrypting passwords. We will have these methods in **server/utils.js**:
 
